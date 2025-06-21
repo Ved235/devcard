@@ -1,13 +1,21 @@
 'use client';
 import { useRef } from 'react';
 import styles from './DevCardPreview.module.css';
+import * as htmlToImage from 'html-to-image';
 
 export default function DevCardPreview({ userData }) {
   const cardRef = useRef(null);
 
   const downloadCard = async () => {
-    console.log('Download functionality to be implemented');
-    alert('Download feature coming soon!');
+    try{
+      htmlToimage.toPng(cardRef.current, {canvasWidth:770, canvasHeight: 354})
+      .then((dataUrl) => {
+        download(dataUrl, `${userData.username}_devcard.png`);
+      });
+    }catch (error) {
+      console.error('Error downloading card:', error);
+      alert('Failed to download card. Please try again.');
+    }
   };
 
   const shareCard = async () => {

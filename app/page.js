@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
-import DevCardForm from "./components/devcardform";
+import DevCardForm from "./components/devCardForm";
 import DevCardPreview from "./components/devCardPreview";
 
 export default function Home() {

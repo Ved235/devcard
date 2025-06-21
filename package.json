@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "downloadjs": "^1.4.7",
+    "html-to-image": "^1.11.13",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^0.522.0",
     "next": "15.3.4",
     "node-fetch": "^3.3.2",
     "react": "^19.0.0",

@@ -58,7 +58,7 @@ export async function GET(request, { params }) {
     const validStories = stories
       .filter((story) => story !== null)
       .sort((a, b) => b.score - a.score)
-      .slice(0, 5);
+      .slice(0, 3);
 
     const result = {
       username: userData.id,
