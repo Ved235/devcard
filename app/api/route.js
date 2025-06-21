@@ -64,9 +64,8 @@ export async function GET(request, { params }) {
       username: userData.id,
       karma: userData.karma || 0,
       creationDate: accountCreated,
-      joinDate: new Date(userData.created * 1000).getFullYear(),
       totalSubmissions: submissions.length,
-      topStories: validStories.map((story) => ({
+      stories: validStories.map((story) => ({
         id: story.id,
         title: story.title,
         score: story.score,
