@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 import DevCardForm from "./components/devcardform";
+import DevCardPreview from "./components/devCardPreview";
 
 export default function Home() {
   const [userData, setUserData] = useState(null);
@@ -25,6 +26,9 @@ export default function Home() {
         <div className={styles.content}>
           <div className={styles.formSection}>
             <DevCardForm onDataFetch={handleDataFetch} />
+          </div>
+          <div className={styles.formSection}>
+            <DevCardPreview userData={userData}/>
           </div>
         </div>
       </main>
