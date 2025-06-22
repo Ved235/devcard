@@ -12,24 +12,39 @@ export default function Home() {
     setUserData(data);
   };
 
+  const handleReset = () => {
+    setUserData(null);
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.header}>
+          <div className={styles.logoWrapper}>
+            <span className={styles.logoText}>HN</span>
+          </div>
           <h1 className={styles.title}>HackerNews DevCard Generator</h1>
           <p className={styles.description}>
-            Create a devcard showcasing your HackerNews profile, stats
-            and top stories
+            Create a beautiful developer card showcasing your HackerNews profile,
+            karma, and top stories.
           </p>
         </div>
 
         <div className={styles.content}>
-          <div className={styles.formSection}>
-            <DevCardForm onDataFetch={handleDataFetch} />
-          </div>
-          <div className={styles.formSection}>
-            <DevCardPreview userData={userData}/>
-          </div>
+          {!userData ? (
+            <div className={styles.formWrapper}>
+              <DevCardForm onDataFetch={handleDataFetch} />
+            </div>
+          ) : (
+            <>
+              <DevCardPreview userData={userData} />
+              <div className={styles.resetContainer}>
+                <button onClick={handleReset} className={styles.resetButton}>
+                  Generate Another Card
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </main>
 

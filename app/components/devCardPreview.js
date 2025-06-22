@@ -9,7 +9,7 @@ export default function DevCardPreview({ userData }) {
 
   const downloadCard = async () => {
     try{
-      htmlToimage.toPng(cardRef.current)
+      htmlToimage.toPng(cardRef.current, {canvasWidth:770, canvasHeight: 354})
       .then((dataUrl) => {
         download(dataUrl, `${userData.username}_devcard.png`);
     });
@@ -39,7 +39,6 @@ export default function DevCardPreview({ userData }) {
 
   if (!userData) {
     return (
-      console.log('No user data available'),
       <div className={styles.placeholder}>
         <div className={styles.placeholderCard}>
           <h3>Your DevCard will appear here</h3>
@@ -54,6 +53,7 @@ export default function DevCardPreview({ userData }) {
       <div className={styles.cardWrapper}>
         <div ref={cardRef} className={styles.devCard}>
           <div className={styles.innerCard}>
+            {/* Left side - Identity & Core Stats */}
             <div className={styles.leftSection}>
               <div className={styles.profileSection}>
                 <div className={styles.avatar}>
@@ -92,6 +92,7 @@ export default function DevCardPreview({ userData }) {
               </div>
             </div>
 
+            {/* Right side - Top Stories */}
             <div className={styles.rightSection}>
               <div className={styles.storiesSection}>
                 <h3 className={styles.storiesTitle}>Top Stories</h3>
