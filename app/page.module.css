@@ -6,14 +6,17 @@
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
 
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
+  justify-content: flex-start;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 40px 20px;
+  gap: 32px;
   font-family: var(--font-geist-sans);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,21 +33,21 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+  gap: 24px;
   width: 100%;
   max-width: 1200px;
+  flex: 1;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  margin: 20px 0 10px;
+  margin: 0 0 10px 0;
   background: linear-gradient(135deg, #ff6b35, #f7931e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -52,7 +55,7 @@
 }
 
 .description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 0.6);
   max-width: 600px;
   margin: 0 auto;
@@ -61,22 +64,29 @@
 .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 32px;
   align-items: start;
+  flex: 1;
+  min-height: 0;
 }
 
-.formSection, .previewSection {
+.formSection {
   background: rgba(0, 0, 0, 0.02);
   border-radius: 12px;
-  padding: 30px;
+  padding: 24px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
 }
 
 .footer {
-  grid-row-start: 3;
   display: flex;
   gap: 24px;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 20px;
 }
 
 .footer a {
@@ -95,7 +105,7 @@
     color: rgba(255, 255, 255, 0.6);
   }
   
-  .formSection, .previewSection {
+  .formSection {
     background: rgba(255, 255, 255, 0.02);
     border-color: rgba(255, 255, 255, 0.1);
   }
@@ -112,14 +122,29 @@
   }
   
   .page {
-    padding: 40px 20px;
+    padding: 20px 15px;
   }
   
   .title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
-  .formSection, .previewSection {
+  .formSection {
     padding: 20px;
+    max-height: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 15px 10px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .formSection {
+    padding: 16px;
   }
 }
