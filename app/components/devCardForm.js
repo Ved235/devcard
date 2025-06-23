@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import styles from './DevCardForm.module.css';
+import styles from './devCardForm.module.css';
 
 export default function DevCardForm({ onDataFetch }) {
   const [username, setUsername] = useState('');

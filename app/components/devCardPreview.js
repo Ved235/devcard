@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from 'react';
-import styles from './DevCardPreview.module.css';
+import styles from './devCardPreview.module.css';
 import * as htmlToimage from 'html-to-image';
 import download from 'downloadjs';
 
