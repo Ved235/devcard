@@ -32,9 +32,9 @@ export default function Home() {
 
         <div className={styles.content}>
           {!userData ? (
-            <div className={styles.formWrapper}>
+            
               <DevCardForm onDataFetch={handleDataFetch} />
-            </div>
+            
           ) : (
             <>
               <DevCardPreview userData={userData} />
