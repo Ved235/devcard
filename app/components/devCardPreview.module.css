@@ -139,46 +139,68 @@
 
 .statsContainer {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  flex-direction: row;
+  gap: 0;
 }
 
 .statItem {
-  background: #ffffff;
-  border: 2px solid #e2e8f0;
-  border-radius: 0.75rem;
-  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 0.5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   transition: all 0.3s ease;
+  flex: 1;
+  text-align: center;
+  min-width: 0;
+}
+
+.statItem:first-child {
+  border-radius: 0.75rem 0 0 0.75rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statItem:last-child {
+  border-radius: 0 0.75rem 0.75rem 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .statItem:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 1;
 }
 
 .statLabel {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  gap: 6px;
+  font-size: 12px;
   color: #4a5568;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .statIcon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .statNumber {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin-top: 4px;
 }
 
 .rightSection {
@@ -359,5 +381,39 @@
   .shareBtn {
     width: 100%;
     justify-content: center;
+  }
+
+  .statsContainer {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .statItem:first-child {
+    border-radius: 0.75rem 0.75rem 0 0;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .statItem:last-child {
+    border-radius: 0 0 0.75rem 0.75rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .statLabel {
+    font-size: 13px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .statNumber {
+    font-size: 16px;
+    align-self: flex-end;
+  }
+
+  .statItem {
+    flex-direction: row;
+    padding: 0.75rem 1rem;
+    text-align: left;
   }
 }

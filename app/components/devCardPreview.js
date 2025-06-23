@@ -19,7 +19,7 @@ export default function DevCardPreview({ userData }) {
 
   const downloadCard = async () => {
     try{
-      htmlToimage.toPng(cardRef.current, {canvasWidth:800, canvasHeight: 380})
+      htmlToimage.toPng(cardRef.current, {canvasWidth:800, canvasHeight: 328})
       .then((dataUrl) => {
         download(dataUrl, `${userData.username}_devcard.png`);
     });
