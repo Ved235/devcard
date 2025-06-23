@@ -26,7 +26,7 @@ export default function Home() {
           <h1 className={styles.title}>HackerNews DevCard Generator</h1>
           <p className={styles.description}>
             Create a beautiful developer card showcasing your HackerNews profile,
-            karma, and top stories.
+            karma and top stories.
           </p>
         </div>
 

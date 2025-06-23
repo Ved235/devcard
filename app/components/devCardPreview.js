@@ -1,15 +1,16 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import styles from './devCardPreview.module.css';
 import * as htmlToimage from 'html-to-image';
 import download from 'downloadjs';
 
 export default function DevCardPreview({ userData }) {
   const cardRef = useRef(null);
+  const cardWrapperRef = useRef(null);
 
   const downloadCard = async () => {
     try{
-      htmlToimage.toPng(cardRef.current, {canvasWidth:1000, canvasHeight: 509})
+      htmlToimage.toPng(cardRef.current, {canvasWidth:800, canvasHeight: 380})
       .then((dataUrl) => {
         download(dataUrl, `${userData.username}_devcard.png`);
     });
@@ -37,6 +38,67 @@ export default function DevCardPreview({ userData }) {
     }
   };
 
+  useEffect(() => {
+    const card = cardRef.current;
+    const wrapper = cardWrapperRef.current;
+
+    if (!card || !wrapper) return;
+
+    const handleMouseMove = (e) => {
+      const rect = wrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / centerY * -10;
+      const rotateY = (x - centerX) / centerX * 10;   
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
+    };
+
+    const handleMouseLeave = () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+    };
+
+    const handleMouseEnter = () => {
+      card.style.transition = 'transform 0.1s ease-out';
+    };
+
+    // Only add listeners on Desktop
+    const mediaQuery = window.matchMedia('(min-width: 769px)');
+    
+    const addListeners = () => {
+      if (mediaQuery.matches) {
+        wrapper.addEventListener('mousemove', handleMouseMove);
+        wrapper.addEventListener('mouseleave', handleMouseLeave);
+        wrapper.addEventListener('mouseenter', handleMouseEnter);
+      }
+    };
+
+    const removeListeners = () => {
+      wrapper.removeEventListener('mousemove', handleMouseMove);
+      wrapper.removeEventListener('mouseleave', handleMouseLeave);
+      wrapper.removeEventListener('mouseenter', handleMouseEnter);
+      card.style.transform = 'none';
+    };
+
+    addListeners();
+    mediaQuery.addEventListener('change', (e) => {
+      if (e.matches) {
+        addListeners();
+      } else {
+        removeListeners();
+      }
+    });
+
+    return () => {
+      removeListeners();
+      mediaQuery.removeEventListener('change', addListeners);
+    };
+  }, [userData]);
+
   if (!userData) {
     return (
       <div className={styles.placeholder}>
@@ -50,7 +112,7 @@ export default function DevCardPreview({ userData }) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.cardWrapper}>
+      <div ref={cardWrapperRef} className={styles.cardWrapper}>
         <div ref={cardRef} className={styles.devCard}>
           <div className={styles.innerCard}>
             {/* Left side - Identity & Core Stats */}
@@ -73,10 +135,10 @@ export default function DevCardPreview({ userData }) {
               <div className={styles.statsContainer}>
                 <div className={styles.statItem}>
                   <div className={styles.statLabel}>
-                    <svg className={styles.statIcon} viewBox="0 0 16 17" fill="none">
-                      <path fillRule="evenodd" clipRule="evenodd" d="M8 13.605A5.333 5.333 0 108 2.938a5.333 5.333 0 000 10.667zm1.213-8.672a.494.494 0 00-.812-.517L4.944 7.922a.494.494 0 00.35.843H7.82l-1.034 2.844a.494.494 0 00.812.518l3.456-3.507a.494.494 0 00-.348-.842H8.179l1.034-2.845z" fill="currentColor"/>
+                    <svg className={styles.statIcon} viewBox="0 0 24 24" fill="none">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M12 20.4A8 8 0 1012 4.4a8 8 0 000 16zm1.82-13.01a.74.74 0 00-1.22-.78L7.42 11.88a.74.74 0 00.52 1.26h4.23l-1.55 4.27a.74.74 0 001.22.78l5.18-5.26a.74.74 0 00-.52-1.26h-4.23l1.55-4.27z" fill="currentColor"/>
                     </svg>
-                    Reputation
+                    Karma
                   </div>
                   <div className={styles.statNumber}>{userData.karma?.toLocaleString()}</div>
                 </div>
