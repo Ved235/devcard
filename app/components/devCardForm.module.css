@@ -149,6 +149,46 @@
   box-shadow: 0 4px 6px -1px rgba(229, 62, 62, 0.1);
 }
 
+.themeSelector {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.themeButton {
+  width: 50px;
+  height: 50px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.themeButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.themeButtonActive {
+  border-color: #2d3748;
+  transform: scale(1.1);
+  box-shadow: 
+    0 8px 15px rgba(0, 0, 0, 0.2),
+    0 0 0 2px rgba(45, 55, 72, 0.1);
+}
+
+.checkIcon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 3;
+}
+
 @media (max-width: 768px) {
   .card {
     padding: 2rem;

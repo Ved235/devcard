@@ -6,6 +6,34 @@ export default function DevCardForm({ onDataFetch }) {
   const [username, setUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [selectedTheme, setSelectedTheme] = useState('orange');
+
+  const themes = [
+    {
+      id: 'orange',
+      name: 'Orange Flame',
+      gradient: 'linear-gradient(135deg, #ff6b35 0%, #f56500 50%, #ea580c 100%)',
+      color: '#ff6b35'
+    },
+    {
+      id: 'blue',
+      name: 'Ocean Blue',
+      gradient: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%)',
+      color: '#3b82f6'
+    },
+    {
+      id: 'purple',
+      name: 'Purple Galaxy',
+      gradient: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%)',
+      color: '#8b5cf6'
+    },
+    {
+      id: 'green',
+      name: 'Forest Green',
+      gradient: 'linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%)',
+      color: '#10b981'
+    }
+  ];
 
   const fetchUserData = async (e) => {
     e.preventDefault();
@@ -23,7 +51,7 @@ export default function DevCardForm({ onDataFetch }) {
       }
       
       if (onDataFetch) {
-        onDataFetch(data);
+        onDataFetch({ ...data, theme: themes.find(t => t.id === selectedTheme) });
       }
     } catch (err) {
       setError(err.message);
@@ -51,16 +79,42 @@ export default function DevCardForm({ onDataFetch }) {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onKeyDown={handleKeyPress}
               placeholder="Enter your username"
               className={styles.input}
               disabled={isLoading}
             />
           </div>
+
+          <div>
+            <label className={styles.label}>
+              Choose Theme
+            </label>
+            <div className={styles.themeSelector}>
+              {themes.map((theme) => (
+                <button
+                  key={theme.id}
+                  type="button"
+                  onClick={() => setSelectedTheme(theme.id)}
+                  className={`${styles.themeButton} ${selectedTheme === theme.id ? styles.themeButtonActive : ''}`}
+                  style={{ background: theme.gradient }}
+                  title={theme.name}
+                >
+                  {selectedTheme === theme.id && (
+                    <svg className={styles.checkIcon} viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6L9 17l-5-5" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <button 
             onClick={fetchUserData}
             disabled={isLoading || !username.trim()}
             className={styles.button}
+            style={{ background: themes.find(t => t.id === selectedTheme)?.gradient }}
           >
             {isLoading ? (
               <>

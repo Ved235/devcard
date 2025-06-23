@@ -28,7 +28,6 @@
 }
 
 .devCard {
-  background: linear-gradient(145deg, #ff6b35 0%, #f56500 50%, #ea580c 100%);
   border-radius: 1.5rem;
   padding: 4px;
   box-shadow: 
@@ -86,7 +85,6 @@
 .avatar {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #ff6b35 0%, #f56500 50%, #ea580c 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -112,7 +110,6 @@
 .username {
   font-size: 22px;
   font-weight: 800;
-  background: linear-gradient(135deg, #2d3748 0%, #ff6b35 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -154,7 +151,6 @@
 }
 
 .statItem:hover {
-  border-color: #ff6b35;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15);
 }
@@ -171,13 +167,11 @@
 .statIcon {
   width: 16px;
   height: 16px;
-  color: #ff6b35;
 }
 
 .statNumber {
   font-size: 20px;
   font-weight: 800;
-  background: linear-gradient(135deg, #2d3748 0%, #ff6b35 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -205,7 +199,6 @@
   margin-bottom: 1rem;
   font-size: 20px;
   font-weight: 800;
-  background: linear-gradient(135deg, #2d3748 0%, #ff6b35 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -246,9 +239,7 @@
 }
 
 .storyLink:hover {
-  border-color: #ff6b35;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15);
 }
 
 .storyTitle {
@@ -269,7 +260,6 @@
   gap: 4px;
   font-size: 14px;
   font-weight: 700;
-  color: #ff6b35;
 }
 
 .scoreIcon {
