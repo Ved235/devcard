@@ -52,7 +52,6 @@ export default function Home() {
         <a
           href="https://news.ycombinator.com"
           target="_blank"
-          rel="noopener noreferrer"
         >
           <Image
             aria-hidden
@@ -66,7 +65,6 @@ export default function Home() {
         <a
           href="https://github.com/Ved235/devcard"
           target="_blank"
-          rel="noopener noreferrer"
         >
           <Image
             aria-hidden

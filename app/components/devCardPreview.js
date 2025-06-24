@@ -271,7 +271,6 @@ export default function DevCardPreview({ userData }) {
                           <a
                             href={`https://news.ycombinator.com/item?id=${story.id}`}
                             target="_blank"
-                            rel="noopener noreferrer"
                             className={styles.storyLink}
                             onMouseEnter={(e) => {
                               e.target.style.borderColor = theme.color;
@@ -313,8 +312,8 @@ export default function DevCardPreview({ userData }) {
 
       <div className={styles.actions}>
         <button onClick={downloadCard} className={styles.downloadBtn}>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m4-5l5 5 5-5m-5 5V3" />
+          <svg width={16} height={16} viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 1.5a.75.75 0 0 1 .75.75V7.5h-1.5V2.25A.75.75 0 0 1 12 1.5ZM11.25 7.5v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V7.5h3.75a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h3.75Z" />
           </svg>
           Download
         </button>
@@ -333,12 +332,12 @@ export default function DevCardPreview({ userData }) {
           ) : (
             <>
               <svg
+                width={16}
+                height={16}
                 viewBox="0 0 24 24"
-                width="16"
-                height="16"
                 fill="currentColor"
               >
-                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8m-4-6l-4-4-4 4m4-4v12" />
+                <path d="M11.47 1.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1-1.06 1.06l-1.72-1.72V7.5h-1.5V4.06L9.53 5.78a.75.75 0 0 1-1.06-1.06l3-3ZM11.25 7.5V15a.75.75 0 0 0 1.5 0V7.5h3.75a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h3.75Z" />
               </svg>
               Share Card
             </>

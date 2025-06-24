@@ -13,7 +13,7 @@ export default function DevCardForm({ onDataFetch }) {
     secondary: '#f56500',
     accent: '#ea580c'
   });
-  const gradientDirection = '135deg'; // Fixed default direction
+  const gradientDirection = '135deg';
 
   const themes = [
     {
@@ -63,7 +63,6 @@ export default function DevCardForm({ onDataFetch }) {
         throw new Error(data.error || 'Failed to fetch user data');
       }
       
-      // Get the current theme
       const currentTheme = selectedTheme === 'custom' 
         ? {
             id: 'custom',
@@ -100,7 +99,6 @@ export default function DevCardForm({ onDataFetch }) {
     }
   };
 
-  // Get current theme for button styling
   const getCurrentTheme = () => {
     if (selectedTheme === 'custom') {
       return {
