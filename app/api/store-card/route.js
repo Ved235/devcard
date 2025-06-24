@@ -1,6 +1,5 @@
 import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
-import * as htmlToimage from "html-to-image";
 
 export async function POST(request) {
   try {
