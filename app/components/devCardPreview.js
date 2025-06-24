@@ -25,7 +25,9 @@ export default function DevCardPreview({ userData }) {
   const generateCardImage = async () => {
     const targetElement =
       layout === "vertical" ? cardVRef.current : cardHRef.current;
-    return await htmlToimage.toPng(targetElement);
+    
+    const dimensions = targetElement.getBoundingClientRect();
+    return await htmlToimage.toPng(targetElement,{canvasWidth: dimensions.width, canvasHeight: dimensions.height});
   };
 
   const downloadCard = async () => {
