@@ -459,3 +459,89 @@
     padding: 1rem 1rem 1.5rem 1rem ;
   }
 }
+
+/* Add these styles to your existing devCardPreview.module.css */
+
+.storedInfo {
+  margin-top: 1rem;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+}
+
+.storedText {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 2px solid #22c55e;
+  color: #065f46;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px rgba(34, 197, 94, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.storedText::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Spinner styles (if not already present) */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile responsiveness for the stored info */
+@media (max-width: 768px) {
+  .storedText {
+    font-size: 13px;
+    padding: 0.875rem 1.25rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.25rem;
+  }
+  
+  .storedInfo {
+    margin-top: 0.75rem;
+  }
+}
