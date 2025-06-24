@@ -347,6 +347,32 @@
   color: white;
 }
 
+.verticalCard {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.verticalInner {
+  flex-direction: column !important;
+  min-height: 600px !important;
+}
+
+.verticalInner .leftSection {
+  width: 100% !important;
+  border-right: none !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+  padding: 2rem 1.5rem 1.5rem 1.5rem !important;
+}
+
+.verticalInner .rightSection {
+  flex: 1 !important;
+  padding: 1.5rem 1.5rem 2rem 1.5rem !important;
+}
+
+.verticalInner .statsContainer {
+  margin-top: 1.5rem;
+}
+
 @media (max-width: 768px) {
   .cardWrapper {
     perspective: none;
@@ -415,5 +441,21 @@
     flex-direction: row;
     padding: 0.75rem 1rem;
     text-align: left;
+  }
+
+  .verticalCard {
+    max-width: 100%;
+  }
+
+  .verticalInner {
+    min-height: 500px !important;
+  }
+
+  .verticalInner .leftSection {
+    padding: 1.5rem 1rem 1rem 1rem !important;
+  }
+
+  .verticalInner .rightSection {
+    padding: 1rem 1rem 1.5rem 1rem !important;
   }
 }

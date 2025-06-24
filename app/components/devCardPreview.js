@@ -16,35 +16,36 @@ export default function DevCardPreview({ userData }) {
   };
 
   const theme = userData?.theme || defaultTheme;
+  const layout = userData?.layout || 'horizontal';
 
   const downloadCard = async () => {
     try{
-      htmlToimage.toPng(cardRef.current, {canvasWidth:800, canvasHeight: 328})
+      const dimensions = layout === 'vertical'
+      ? {canvasWidth: 800, canvasHeight: 608}
+      : {canvasWidth: 800, canvasHeight: 328};
+
+      htmlToimage.toPng(cardRef.current,dimensions)
       .then((dataUrl) => {
         download(dataUrl, `${userData.username}_devcard.png`);
-    });
-  }catch (error) {
-    console.error('Error downloading card:', error);
+      });
+    }catch (e) {
+    console.error('Error downloading card:', e);
     alert('Failed to download card. Please try again.');
-  }
+    } 
   }
 
   const shareCard = async () => {
-    if (navigator.share && userData) {
       try {
         await navigator.share({
           title: `${userData.username}'s HackerNews DevCard`,
           url: window.location.href,
         });
         console.log('Shared successfully');
-      } catch (err) {
+      } catch (e) {
         navigator.clipboard.writeText(window.location.href);
         alert('Link copied to clipboard!');
+        console.log(e)
       }
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
-    }
   };
 
   useEffect(() => {
@@ -122,9 +123,9 @@ export default function DevCardPreview({ userData }) {
   return (
     <div className={styles.container}>
       <div ref={cardWrapperRef} className={styles.cardWrapper}>
-        <div ref={cardRef} className={styles.devCard} style={{ background: theme.gradient }}>
-          <div className={styles.innerCard}>
-            {/* Left side - Identity & Core Stats */}
+        <div ref={cardRef} className={`${styles.devCard} ${layout === 'vertical' ? styles.verticalCard : ''}`} style={{ background: theme.gradient }}>
+          <div className={`${styles.innerCard} ${layout === 'vertical' ? styles.verticalInner : ''}`}>
+            {/*Identity & Core Stats */}
             <div className={styles.leftSection}>
               <div className={styles.profileSection}>
                 <div className={styles.avatar} style={{ background: theme.gradient }}>
@@ -178,7 +179,7 @@ export default function DevCardPreview({ userData }) {
               </div>
             </div>
 
-            {/* Right side - Top Stories */}
+            {/*Top Stories */}
             <div className={styles.rightSection}>
               <div className={styles.storiesSection}>
                 <h3 className={styles.storiesTitle} style={{ 
