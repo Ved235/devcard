@@ -7,6 +7,7 @@ export default function DevCardForm({ onDataFetch }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [selectedTheme, setSelectedTheme] = useState('orange');
+  const [selectedLayout, setSelectedLayout] = useState('horizontal');
   const [customColors, setCustomColors] = useState({
     primary: '#ff6b35',
     secondary: '#f56500',
@@ -73,7 +74,7 @@ export default function DevCardForm({ onDataFetch }) {
         : themes.find(t => t.id === selectedTheme);
       
       if (onDataFetch) {
-        onDataFetch({ ...data, theme: currentTheme });
+        onDataFetch({ ...data, theme: currentTheme, layout: selectedLayout });
       }
     } catch (err) {
       setError(err.message);
@@ -170,6 +171,38 @@ export default function DevCardForm({ onDataFetch }) {
                     <path d="M12 2l3.09 6.26L22 9l-5.45 5.19L17.82 22L12 18.77L6.18 22l1.27-7.81L2 9l6.91-.74L12 2z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )}
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label className={styles.label}>
+              Card Layout
+            </label>
+            <div className={styles.layoutSelector}>
+              <button
+                type="button"
+                onClick={() => setSelectedLayout('horizontal')}
+                className={`${styles.layoutButton} ${selectedLayout === 'horizontal' ? styles.layoutButtonActive : ''}`}
+                title="Horizontal Layout"
+              >
+                <svg className={styles.layoutIcon} viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M9 5v14" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+                Horizontal
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedLayout('vertical')}
+                className={`${styles.layoutButton} ${selectedLayout === 'vertical' ? styles.layoutButtonActive : ''}`}
+                title="Vertical Layout"
+              >
+                <svg className={styles.layoutIcon} viewBox="0 0 24 24" fill="none">
+                  <rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M5 9h14" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+                Vertical
               </button>
             </div>
           </div>

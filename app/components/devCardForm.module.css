@@ -308,6 +308,49 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.layoutSelector {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.layoutButton {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.layoutButton:hover {
+  border-color: #ff6b35;
+  background: #f7fafc;
+  transform: translateY(-1px);
+}
+
+.layoutButtonActive {
+  border-color: #ff6b35;
+  background: #fff5f0;
+  color: #ff6b35;
+  transform: translateY(-1px);
+}
+
+.layoutIcon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+}
+
 @media (max-width: 768px) {
   .card {
     padding: 2rem;
@@ -338,5 +381,19 @@
   .themeButton {
     width: 40px;
     height: 40px;
+  }
+  
+  .layoutSelector {
+    gap: 0.5rem;
+  }
+  
+  .layoutButton {
+    font-size: 13px;
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .layoutIcon {
+    width: 20px;
+    height: 20px;
   }
 }
