@@ -34,7 +34,7 @@ export default function DevCardPreview({ userData }) {
       download(dataUrl, `${userData.username}_${layout}_devcard.png`);
     } catch (e) {
       console.log(e);
-      alert("Failed to download card. Please try again.");
+      alert("Failed to download card");
     }
   };
 
