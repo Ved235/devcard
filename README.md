@@ -9,6 +9,14 @@ A Next.js application that generates beautiful developer cards showcasing your H
 - Horizontal and vertical layout options
 - Download cards as PNG images
 - Share cards with direct links
+  
+**Sample horizontal devCard:**
+
+![jl_horizontal_devcard](https://github.com/user-attachments/assets/9420621a-ce51-45c5-be97-5ab22f98f1e5)
+
+**Sample vertical devCard:**
+
+![jl_vertical_devcard](https://github.com/user-attachments/assets/28b62dcf-b6fb-4766-be15-f81f7c697a33)
 
 ## Getting Started
 
