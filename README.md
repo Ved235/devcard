@@ -62,4 +62,4 @@ npm run dev
 
 ## Deployment
 
-The easiest way to deploy is using the [Vercel Platform](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example).
+The easiest way to deploy is using the Vercel
