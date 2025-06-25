@@ -1,6 +1,7 @@
 # HackerNews DevCard Generator
 
 A Next.js application that generates beautiful developer cards showcasing your HackerNews profile, karma and top stories.
+_Please use a chromium based browser. It has compatibility issues with firefox_
 
 ## Features
 
